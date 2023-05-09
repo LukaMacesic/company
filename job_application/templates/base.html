@@ -1,0 +1,57 @@
+{% load static %}
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+        <style>
+            body {
+                background: url("{% static 'images/background.jpg' %}") no-repeat center center fixed;
+                background-size: cover;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div class="container">
+            <a class="navbar-brand" href="{% url 'index' %}">
+                <img src="/static/images/AAEC-Logo.jpg" class="d-inline-block align-top"
+                     height="60" width="150" alt="AAEC Energy Consulting">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item {% if request.path == '/services/' %}active{% endif %}">
+                  <a class="nav-link" href="{% url 'services' %}">Services</a>
+                </li>
+                <li class="nav-item {% if request.path == '/about/' %}active{% endif %}">
+                  <a class="nav-link" href="{% url 'about' %}">About</a>
+                </li>
+                <li class="nav-item {% if request.path == '/contact/' %}active{% endif %}">
+                  <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+        <!-- Footer -->
+            <footer class="text-center text-lg-start bg-dark text-muted footer fixed-bottom">
+                <div class="container">
+                    AAEC Energy Consulting
+                    &nbsp
+                    Contact us:
+                    <a href="mailto:office@aaec-energy.com">office@aaec-energy.com</a>
+                </div>
+            </footer>
+        <!-- Footer -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+    </body>
+</html>
